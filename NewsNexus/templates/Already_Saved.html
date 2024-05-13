@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Already Saved</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #f8f9fa; /* Light grey background */
+        }
+        .container {
+            max-width: 600px; /* Increase container width */
+            margin: 100px auto; /* Center container horizontally */
+        }
+        .card {
+            border: none; /* Remove border from card */
+            border-radius: 10px; /* Add border radius */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+        }
+        .card-body {
+            padding: 40px; /* Add padding to card body */
+        }
+        .extra-large-text {
+            font-size: 36px;
+            font-weight: bold;
+            color: #28a745; /* Green color for text */
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        .btn-back {
+            background-color: transparent; /* Transparent background for button */
+            border: none; /* Remove button border */
+            color: #007bff; /* Blue color for button */
+        }
+        .btn-back:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="card">
+            <div class="card-body">
+                <p class="extra-large-text mb-4">Feed Already Saved</p>
+                
+                <!-- Back icon button -->
+                <button class="btn btn-back btn-lg" onclick="goBack()"><i class="fas fa-arrow-left fa-2x"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    
+    <script>
+        // JavaScript function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

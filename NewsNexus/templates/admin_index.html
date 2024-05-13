@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N e w s _ N e x u s</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .title-container {
+      background-color: #cce5ff; /* Light blue background */
+      padding: 20px 0;
+      text-align: center;
+      margin-bottom: 20px; /* Moved the title container down */
+    }
+    .title h1 {
+      font-size: 48px;
+      color: #004085; /* Darker blue title color */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      font-weight: bold; /* Bold font weight */
+      font-family: "Times New Roman", Times, serif; /* Changed font family */
+    }
+    .quote {
+      font-style: italic;
+      color: #666;
+      margin-top: 10px;
+      text-indent: 40px; 
+      /* Indentation for the quote */
+    }
+    .name {
+  font-style: italic;
+  color: #666;
+  margin-top: 10px;
+  text-indent: 40px;
+  margin-left: 1000px;
+  font-size: 20px; /* Adjust font size as needed */
+  font-weight: bold; /* Make the font bold */
+}
+
+    .post-button {
+      margin-top: 20px; 
+      position: absolute;
+      top: 20px;
+      left: 20px; /* Moved to the left side */
+      padding: 18px 36px;
+      font-size: 20px;
+      border-radius: 8px;
+      background-color: #28a745;
+      border: none; /* Removed border */
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .post-button:hover {
+      background-color: #218838;
+    }
+
+    /* Logout button Styles */
+    .logout-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 24px;
+      color: #007bff; /* Blue color */
+      transition: color 0.3s ease;
+    }
+    .logout-button:hover {
+      color: #0056b3; /* Darker blue color on hover */
+    }
+
+    /* Popup Styles */
+    .popup-container {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      border: 2px solid #007bff;
+      padding: 40px;
+      z-index: 9999;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .popup-input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+    }
+    .popup-button {
+      padding: 16px 32px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .popup-button:hover {
+      background-color: #0056b3;
+    }
+    .cancel-button {
+      background-color: #dc3545;
+    }
+    .cancel-button:hover {
+      background-color: #bd2130;
+    }.question-container{
+    width: 80%; /* Set the width of the container */
+    margin: 0 auto; 
+    margin-top: 10px;/* Center the container horizontally */
+    border: 5px solid #636262; 
+    position: relative;/* Border style */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include border and padding in the width calculation */
+    }
+    .save-btn {
+    background-color: #013d15; /* Set the default button color */
+    color: #fff; /* Set text color to white */
+}  .save-btn {
+    position: absolute; /* Set absolute positioning */
+    top: 10px; /* Set distance from the top */
+    right: 10px;
+ 
+}
+  </style>
+</head>
+<body>
+  
+  <div class="title-container">
+    <div class="title">
+      <h1>N e w s _ N e x u s</h1>
+    </div>
+    <div class="quote">
+      <p>"Bringing you the latest news and insights from around the globe."</p>
+    </div>
+    <div class="name">
+      <label>Welcome ! {{name}}</label>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"></a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <!-- Logout button -->
+            <a href="{% url 'home' %}" class="logout-button">
+              <i class="fas fa-power-off"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <!-- Post Feed button with pen icon -->
+            <button class="btn btn-primary post-button" id="postButton"><i class="fas fa-pen"></i></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+    {% for feed in data %}
+      <div class="question-container">
+      <p><b> {{feed.username}} </b>: {{ feed.content }} </p>
+    </div>
+    {% endfor %}
+
+  <!-- Popup container -->
+  <form  action="{% url 'feed_post' %}" method="post">{% csrf_token %}
+  <div class="popup-container" id="popupContainer">
+    <h3>Post a Feed</h3>
+    <textarea id="feedText" class="popup-input" name="feed_content" rows="8" cols="50"></textarea><br>
+    <button id="postQuestion" class="popup-button">Post</button>
+    <button id="cancelButton" class="popup-button cancel-button">Cancel</button>
+  </div>
+  </form>
+
+  <script>
+    // Popup functionality
+    document.getElementById("postButton").addEventListener("click", function() {
+      var popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "block";
+    });  
+
+    document.getElementById("postQuestion").addEventListener("click", function() {
+      var questionText = document.getElementById("feedText").value;
+      alert("Question posted: " + questionText);
+      var popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "none";
+    });
+
+    document.getElementById("cancelButton").addEventListener("click", function(event) {
+      event.preventDefault();
+      var popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N e w s _ N e x u s</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .title-container {
+      background-color: #cce5ff; /* Light blue background */
+      padding: 20px 0;
+      text-align: center;
+      margin-bottom: 20px; /* Moved the title container down */
+    }
+    .title h1 {
+      font-size: 48px;
+      color: #004085; /* Darker blue title color */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      font-weight: bold; /* Bold font weight */
+      font-family: "Times New Roman", Times, serif; /* Changed font family */
+    }
+    .quote {
+      font-style: italic;
+      color: #666;
+      margin-top: 10px;
+      text-indent: 40px; /* Indentation for the quote */
+    }
+   
+    /* Logout button Styles */
+    .logout-button, .saved-button {
+      position: absolute;
+      top: 10px;
+      right: 80px; /* Adjusted position */
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 32px; /* Increased font size */
+      color: #007bff; /* Blue color */
+      transition: color 0.3s ease;
+    }
+    .logout-button:hover, .saved-button:hover {
+      color: #0056b3; /* Darker blue color on hover */
+    }
+
+    /* Popup Styles */
+    .question-container{
+    width: 80%; /* Set the width of the container */
+    margin: 0 auto; 
+    margin-top: 10px;/* Center the container horizontally */
+    border: 5px solid #636262; 
+    position: relative;/* Border style */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include border and padding in the width calculation */
+    }
+    .save-btn {
+    position: absolute; /* Set absolute positioning */
+    top: 10px; /* Set distance from the top */
+    right: 10px;
+ 
+}
+.save-btn {
+    background-color: #013d15; /* Set the default button color */
+    color: #fff; /* Set text color to white */
+}
+.saved-button{
+    margin-right: 40px;
+
+}.logout-button{
+    margin-left: 50px;
+}
+
+.name {
+  font-style: italic;
+  color: #666;
+  margin-top: 10px;
+  text-indent: 40px;
+  margin-left: 1000px;
+  font-size: 20px; /* Adjust font size as needed */
+  font-weight: bold; /* Make the font bold */
+}
+  </style>
+</head>
+<body>
+  
+  <div class="title-container">
+    <div class="title">
+      <h1>N e w s _ N e x u s</h1>
+    </div>
+    <div class="quote">
+      <p>"Bringing you the latest news and insights from around the globe."</p>
+    </div>
+    <div class="name">
+      <label>Welcome ! {{name}}</label>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"></a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" style="margin-right: 20px;">
+            <!-- Post Feed button with hand holding pen icon -->
+          </li>
+          <li class="nav-item">
+            <!-- Logout button -->
+            <a href="{% url 'home' %}" class="logout-button">
+              <i class="fas fa-power-off"></i>
+            </a>
+            <!-- Saved Items button -->
+            <a href="{% url 'Saved_Items_List' %}" class="saved-button">
+              <i class="fas fa-bookmark" style="font-size: 32px;"></i> <!-- Bookmark icon -->
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="feed_container">
+    {% for feed in data %}
+    <div class="question-container">
+      <form action="{% url 'Save_Item' feed_id=feed.feed_id %}" method="post">{% csrf_token %} 
+        <a href="{% url 'Save_Item' feed_id=feed.feed_id %}"></a><button class="btn btn-primary save-btn" id="Saved">Save</button>
+      </form> 
+      <p><b>{{ feed.username }} </b>: {{ feed.content }} </p>
+    </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About EdInteract</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+    h2 {
+      color: #007bff;
+      margin-bottom: 40px; /* Increased margin bottom */
+      font-size: 36px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    p {
+      margin-top:20px;
+      line-height: 2; /* Increase line spacing */
+      text-align: justify; 
+      font-family: Arial, sans-serif; /* Change font family */
+      font-size: 20px;/* Justify content */
+    }
+    .btn-home {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>About </h2>
+    
+      <p>
+        This innovative application offers users a comprehensive repository of curated news content across various categories, enabling them to stay informed about the latest developments in their areas of interest.
+        This application offers a robust saving feature that allows users to bookmark articles for future reference, enabling them to create a personalized archive of valuable content.
+        Admins play a pivotal role in News Nexus, leveraging dedicated tools to curate and publish news articles for the user community. 
+      </p>   
+    <a href="{% url 'home' %}" class="btn btn-primary btn-home">Back to Home</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NewsNexus</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Background styles for the entire page */
+    body {
+      background-color: #f8f9fa; /* Light gray background color */
+      font-family: 'Roboto', sans-serif; /* Change font type */
+    }
+
+    /* Center title and subtitle */
+    .center {
+      text-align: center;
+    }
+
+    /* Custom styles for the title and subtitle */
+    .title-container {
+     /* Blue background color */
+      padding: 20px; /* Add padding */
+      margin-bottom: 20px; /* Add margin at the bottom */
+    }
+    .title {
+      font-size: 3em; /* Larger font size */
+      font-weight: bold; /* Bold font weight */
+      color: #0a0a0a; /* White text color */
+      text-transform: uppercase; /* Uppercase text */
+      letter-spacing: 2px; /* Letter spacing */
+      font-family: 'Arial', sans-serif; /* Change font type */
+    }
+    .subtitle {
+      font-size: 1.5em; /* Font size */
+      color: #0a0a0a; /* White text color */
+      font-style: italic; /* Italic style */
+      font-family: 'Arial', sans-serif; /* Change font type */
+    }
+
+    /* Custom styles for the main content */
+    .main-content {
+      margin-top: 20px; /* Add space between header and content */
+      padding: 0 20px; /* Add padding to the sides */
+      font-size: 18px; /* Adjust font size */
+      line-height: 2; /* Increase line height */
+      color: #070707; /* Dark gray color */
+    }
+    /* Indent the first line */
+    .main-content p:first-of-type {
+      text-indent: 2em;
+    }
+    /* Justify align paragraph text */
+    .main-content p {
+      text-align: justify;
+    }
+    
+    /* Style for buttons */
+    .button-group {
+      text-align: right; /* Align buttons to the right */
+      margin-bottom: 10px; /* Add margin at the bottom */
+    }
+    .btn-custom {
+      background-color: transparent; /* Transparent background */
+      color: #050505; /* Blue text color */
+      border: none; /* Remove border */
+      padding: 10px 20px; /* Add padding */
+      margin-left: 10px; /* Add margin between buttons */
+      transition: color 0.3s; /* Smooth transition */
+      font-size: 36px; /* Larger font size for icons */
+    }
+    .btn-custom:hover {
+      color: #0056b3; /* Darker blue on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-12 center">
+        <!-- Customized title and subtitle -->
+        <div class="title-container">
+          <h1 class="title">N e w s N e x u s....!</h1>
+          <p class="subtitle">Bringing you the latest news and insights from around the globe.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Button group -->
+    <div class="row">
+      <div class="col-sm-12 button-group">
+        <a href="{% url 'RegisterAs' %}" class="btn btn-custom"><i class="fas fa-user-plus"></i></a>
+        <a href="{% url 'Login' %}" class="btn btn-custom"><i class="fas fa-user"></i></a>
+        <a href="{% url 'About' %}" class="btn btn-custom"><i class="fas fa-info-circle"></i></a>
+        <a href="{% url 'Contact' %}" class="btn btn-custom"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+    <!-- Main content -->
+    <div class="row mt-4">
+      <div class="col-sm-12 main-content">
+        <p>
+          This innovative application offers users a comprehensive repository of curated news content across various categories, enabling them to stay informed about the latest developments in their areas of interest.
+          This application offers a robust saving feature that allows users to bookmark articles for future reference, enabling them to create a personalized archive of valuable content.
+          Admins play a pivotal role in News Nexus, leveraging dedicated tools to curate and publish news articles for the user community.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
